@@ -6,12 +6,16 @@
 <div class="container mt-4">
   <h3>Tasks</h3>
   <hr/>
-  <div class="row"> <!-- row -> vai consumir toda linha de cima com 12 posições-->
-    <div class="col-md-6"> <!--col-md-6 -> dentro da linha acima esta sendo colocado uma colouna com 6 posições-->
-      <input type="text" class="form-control">
-    </div>
-    <div class="col-md-2">
-       <button class="btn btn-primary">Add</button>
-    </div>
-  </div>
+    <!--ngSubmit -> Evento que funciona quando houver click no button 
+        submit() -> Metodo criado no app.component que submete o formulario -->
+    <form [formGroup]="form" (ngSubmit)="submit()"> 
+      <div class="row"> <!-- row -> vai consumir toda linha de cima com 12 posições-->
+        <div class="col-md-6"> <!--col-md-6 -> dentro da linha acima esta sendo colocado uma colouna com 6 posições-->
+          <input type="text" class="form-control" formControlName="description">
+        </div>
+        <div class="col-md-2">
+          <button class="btn btn-primary" type="submit">Add</button>
+        </div>
+      </div>
+  </form>
 </div>

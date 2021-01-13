@@ -28,6 +28,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -124,5 +125,8 @@
       }
     }
   },
-  "defaultProject": "tasks-front-end"
+  "defaultProject": "tasks-front-end",
+  "cli": {
+    "analytics": "6a712440-9f1a-4ebb-b21b-a4636d10aa91"
+  }
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core'; // OnInit -> importe para incializar uma função ou metodo assim que o componente for inicializado
 import { FormControl, FormGroup } from '@angular/forms'; // FormGroup -> Classe que apresenta os campos do formulario
 import { Tasks } from './tasks'; // importe do obj Task
 import { TaskService } from './task.service'; // Importe do serviço que se conecta a APi
@@ -11,7 +11,7 @@ import { TaskService } from './task.service'; // Importe do serviço que se cone
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
  
 
   tasks : Tasks[] = [] // Inicializando com array vazio
@@ -26,6 +26,12 @@ export class AppComponent {
   constructor(
     private service : TaskService
   ){}
+
+
+  // Metodo executado assim que o componente e mostrado na tela
+  ngOnInit(){
+    this.service.listar().subscribe(tasksList => this.tasks = tasksList)
+  }
 
   /*
     ...this.form.value -> Tranforma o obj javaScript em obj Task

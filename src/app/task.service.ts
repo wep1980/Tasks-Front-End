@@ -25,4 +25,10 @@ export class TaskService {
   salvar(task: Tasks) : Observable<Tasks>{
      return this.http.post<Tasks>(this.apiURL, task)
   }
+
+
+  listar() : Observable<Tasks[]> {
+
+    return this.http.get<Tasks[]>(this.apiURL);
+  }
 }

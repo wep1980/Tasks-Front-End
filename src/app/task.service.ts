@@ -31,4 +31,14 @@ export class TaskService {
 
     return this.http.get<Tasks[]>(this.apiURL);
   }
+
+
+  /*
+  void -> O metodo não retorna nada
+  */
+  delete(id : number) : Observable<void>{
+
+    const url = `${this.apiURL}/${id}` // Passando a URL da api mais o id que sera deletado
+    return this.http.delete<void>(url);
+  }
 }

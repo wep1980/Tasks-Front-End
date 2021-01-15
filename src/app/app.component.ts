@@ -28,8 +28,15 @@ export class AppComponent implements OnInit {
   ){}
 
 
-  // Metodo executado assim que o componente e mostrado na tela
+  /**
+   * Lista todos os tasks
+   * Metodo executado assim que o componente e mostrado na tela
+   */ 
   ngOnInit(){
+    this.findAll()
+  }
+
+  findAll(){
     this.service.listar().subscribe(tasksList => this.tasks = tasksList)
   }
 
@@ -46,4 +53,12 @@ export class AppComponent implements OnInit {
                   this.form.reset() // Limpa o formulario depois de salvar
                 })
               }
+
+
+  delete(task : Tasks){
+    
+    this.service.delete(task.id).subscribe({
+      next : (response) => this.findAll()
+    })
+  }         
 }

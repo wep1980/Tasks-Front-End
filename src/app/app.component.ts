@@ -13,6 +13,9 @@ import { TaskService } from './task.service'; // Importe do serviço que se cone
 })
 export class AppComponent {
  
+
+  tasks : Tasks[] = [] // Inicializando com array vazio
+
   // form -> variavel utilizada no form da pagina HTML
   form : FormGroup = new FormGroup({
 
@@ -29,9 +32,12 @@ export class AppComponent {
     subscribe() -> Trata o retorno da requisição
   */
   submit(){
-    console.log(this.form.value)
-    const tasks : Tasks = { ...this.form.value }
-    this.service.salvar(tasks)
-                .subscribe(savedTask => console.log(savedTask))
-  }
+   
+    const tasks : Tasks = { ...this.form.value } // Cria uma task com os valores do formulario
+    this.service.salvar(tasks) // Chama o metodo salvar do service
+                .subscribe(savedTask => {
+                  this.tasks.push(savedTask) // Adicionando a Task na lista de tasks
+                  this.form.reset() // Limpa o formulario depois de salvar
+                })
+              }
 }

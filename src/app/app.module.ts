@@ -4,7 +4,8 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { ReactiveFormsModule } from '@angular/forms'; // Importe para trabalhar com formularios
+import { ReactiveFormsModule } from '@angular/forms'; // Importe do modulo para trabalhar com formularios
+import { HttpClientModule } from '@angular/common/http'; // Importe do modulo para utilizar HTTP
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { ReactiveFormsModule } from '@angular/forms'; // Importe para trabalhar 
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

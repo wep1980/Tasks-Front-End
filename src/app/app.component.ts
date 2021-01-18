@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'; // OnInit -> importe para incializar uma função ou metodo assim que o componente for inicializado
-import { FormControl, FormGroup } from '@angular/forms'; // FormGroup -> Classe que apresenta os campos do formulario
+import { FormControl, FormGroup, Validators } from '@angular/forms'; // FormGroup -> Classe que apresenta os campos do formulario
 import { Tasks } from './tasks'; // importe do obj Task
 import { TaskService } from './task.service'; // Importe do serviço que se conecta a APi
 
@@ -19,8 +19,14 @@ export class AppComponent implements OnInit {
   // form -> variavel utilizada no form da pagina HTML
   form : FormGroup = new FormGroup({
 
-    // description -> Variavel igual a criada na APi e que serve como referencia na pagina HTML para capturar a descrição digitada na tela.
-    description : new FormControl('') // O valor inicial e uma String vazia, FormControl-> Objeto JavaScript.
+    /**
+     * description -> Variavel igual a criada na APi e que serve como referencia na pagina HTML para 
+     * capturar a descrição digitada na tela.
+     * 
+     * O valor inicial e uma String vazia, FormControl-> Objeto JavaScript.
+     * [Validators.required, Validators.minLength(4)] -> O campo descrição e requerido e tem q ter no min 4 digitos
+     */
+    description : new FormControl('', [Validators.required, Validators.minLength(4)])
   })
 
   constructor(

@@ -3,6 +3,7 @@ import { Tasks } from './tasks'; // Importe do objeto Task
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
+
 // Classe de serviço - RESPONSAVEL POR FAZER A COMUNICAÇÃO COM A APi
 
 @Injectable({
@@ -40,5 +41,17 @@ export class TaskService {
 
     const url = `${this.apiURL}/${id}` // Passando a URL da api mais o id que sera deletado
     return this.http.delete<void>(url);
+  }
+
+  marcarComoConcluido(id : number) : Observable<Tasks> {
+    const url = `${this.apiURL}/${id}/done` // Passando a URL da api mais o id que sera atualizado para feito
+
+    /*
+    {} -> enviando um objeto vazio pq o metodo patch exige que seja passado um objeto no corpo da requisição.
+          Dentro do objeto poderia ser passado propriedades especificas para serem atualizadas
+    */ 
+
+    return this.http.patch<Tasks>(url, {}) 
+
   }
 }

@@ -60,5 +60,19 @@ export class AppComponent implements OnInit {
     this.service.delete(task.id).subscribe({
       next : (response) => this.findAll()
     })
-  }         
+  }  
+  
+  
+  done(tasks : Tasks){
+    this.service.marcarComoConcluido(tasks.id).subscribe({
+
+      /**
+       * A APi esta retornando uma Task atualizada
+       */
+      next : (todoAtualizado) => {
+        tasks.done = todoAtualizado.done
+        tasks.doneDate = todoAtualizado.doneDate
+      }
+    })
+  }
 }

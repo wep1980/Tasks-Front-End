@@ -27,11 +27,19 @@
 
         <!-- *ngFor="" -> Diretiva do angular que vai percorrer a lista de tasks.
               let task -> variavel local que representa a lista de -> tasks do app.component.ts 
-              (click)="delete(task) -> Evento de click que chama o metodo delete do app.component.ts -->
+              (click)="delete(task) -> Evento de click que chama o metodo delete do app.component.ts 
+               [disabled]="task.done" -> quando a tarefa for true o botao done sera desativado 
+               {{}} -> A interpolação serve para ser colocado uma expressão javaScript -->
         <li *ngFor="let task of tasks" class="list-group-item d-flex justify-content-between align-items-center">
-          {{task.description}}
+          <span class="{{task.done ? 'done' : ''}}"> <!--Se a tarefa estiver feita coloca a classe css senão não faz nada-->
+            {{task.description}} {{task.doneDate}}
+          </span> 
           <div class="btn-group">
-             <button class="btn btn-success">Done</button>
+             <button class="btn btn-success" 
+                     [disabled]="task.done"
+                     (click)="done(task)">
+                     Done
+                    </button>
              <button class="btn btn-danger" (click)="delete(task)">Delete</button>
           </div>
         </li>

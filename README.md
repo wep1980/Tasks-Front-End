@@ -16,7 +16,6 @@ O Task é uma aplicação que simula um sistema de bloco de notas, onde o usuár
 ## Back end
 - JavaEE
 - Spring Boot
-- JPA (JPQL)
 - API REST
 - JPA
 - Postman
